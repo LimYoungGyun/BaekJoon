@@ -1,24 +1,31 @@
 package step03;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class Quiz_02439 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-		Scanner scan = new Scanner(System.in);
-		int number = scan.nextInt();
+		int count = Integer.valueOf(br.readLine());
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		br.close();
 		
-		for (int i = 0; i < number; i++) {
-			for (int j = number - (i + 1); j > 0; j--) {
-				System.out.print(" ");
+		for (int i = 0; i < count; i++) {
+			for (int j = i; j < count - 1; j++) {
+				bw.write(" ");
 			}
-			for (int j = 0; j < i + 1; j++) {
-				System.out.print("*");
+			for (int j = count - i; j <= count; j++) {
+				bw.write("*");
 			}
-			System.out.println();
+			bw.write("\n");
 		}
-
+		bw.flush();
+		bw.close();
 	}
 
 }

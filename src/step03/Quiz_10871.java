@@ -1,29 +1,33 @@
 package step03;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
 
 public class Quiz_10871 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
-		Scanner scan = new Scanner(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-		int index = scan.nextInt();
-		int number = scan.nextInt();
+		StringTokenizer st = new StringTokenizer(br.readLine()," ");
+		int N = Integer.valueOf(st.nextToken());
+		int X = Integer.valueOf(st.nextToken());
 		
-		int[] arr = new int[index];
-		for (int i = 0; i < arr.length; i++) {
-			arr[i] = scan.nextInt();
-		}
 		
-		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] < number) {
-				System.out.print(arr[i] + " ");
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		st = new StringTokenizer(br.readLine()," ");
+		for (int i = 0; i < N; i++) {
+			int result = Integer.valueOf(st.nextToken());
+			if (X > result) {
+				bw.write(result + " ");
 			}
 		}
-		
-		scan.close();
-
+		br.close();
+		bw.flush();
+		bw.close();
 	}
-
 }
