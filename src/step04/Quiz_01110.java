@@ -1,35 +1,31 @@
 package step04;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class Quiz_01110 {
-
-	public static void main(String[] args) {
-
-		Scanner scan = new Scanner(System.in);
-
-		int number = scan.nextInt();
-		int f_number = number;
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
-		int i = 1;
+		int N = Integer.valueOf(br.readLine());
+		int value = N;
+		int cnt = 0;
 		
-		if (number >= 0 && number <= 99) {
-			
-			while (true) {
-				number = ((number % 10) * 10) + ((number / 10) + (number % 10)) % 10;
-				
-				if (f_number == number) {
-					break;
-				}
-				i++;
+		while(true) {
+			value = ((value % 10) * 10) + ((value / 10) + (value % 10)) % 10;
+			cnt++;
+			if (N == value) {
+				break;
 			}
-
-			System.out.println(i);
-			
 		}
-		
-		scan.close();
-
+		br.close();
+		bw.write(cnt + "\n");
+		bw.flush();
+		bw.close();
 	}
 
 }
