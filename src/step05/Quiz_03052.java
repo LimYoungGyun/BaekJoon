@@ -1,37 +1,27 @@
 package step05;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.HashSet;
 
 public class Quiz_03052 {
-
-	public static void main(String[] args) {
-
-		Scanner scan = new Scanner(System.in);
-
-		int[] arr = new int[10];
-		for (int i = 0; i < arr.length; i++) {
-			arr[i] = scan.nextInt();
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		HashSet<Integer> h = new HashSet<>();
+		
+		for (int i = 0; i < 10; i++) {
+			h.add(Integer.valueOf(br.readLine()) % 42);
 		}
 		
-		for (int i = 0; i < arr.length; i++ ) {
-			arr[i] = arr[i] % 42;
-		}
-
-		List<Integer> list = new ArrayList<>();
-		
-		for (int i = 0; i < arr.length; i++) {
-			if (list.contains(arr[i])) {
-				continue;
-			} else {
-				list.add(arr[i]);
-			}
-		}
-		System.out.println(list.size());
-		
-		scan.close();
-
+		br.close();
+		bw.write(h.size() + "\n");
+		bw.flush();
+		bw.close();
 	}
 
 }
