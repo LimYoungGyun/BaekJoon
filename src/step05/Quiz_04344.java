@@ -1,48 +1,38 @@
 package step05;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Quiz_04344 {
-
-	public static void main(String[] args) {
-
-		Scanner scan = new Scanner(System.in);
-
-		int testCaseNumber = scan.nextInt();
-		int testCase[] = new int[testCaseNumber];
-		int scoreCnt = 0;
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
 		
-		for (int i = 0; i < testCase.length; i++) {
-			scoreCnt = scan.nextInt();
-			int indiScore[] = new int[scoreCnt];
+		int C = Integer.valueOf(br.readLine());
+		
+		for (int i = 0; i < C; i++) {
+			st = new StringTokenizer(br.readLine(), " ");
+			int N = Integer.valueOf(st.nextToken());
+			int[] arr = new int[N];
 			
-			for (int j = 0; j < indiScore.length; j++) {
-				indiScore[j] = scan.nextInt();
+			double sum = 0;
+			for (int j = 0; j < N; j++) {
+				arr[j] = Integer.valueOf(st.nextToken());
+				sum += arr[j];
 			}
 			
-			int sum = 0;
-			double avg = 0.0;
+			double avg = sum / N;
+			double cnt = 0.0;
 			
-			for (int j = 0; j < indiScore.length; j++) {
-				sum += indiScore[j];
-			}
-			avg = sum / (double) scoreCnt;
-			
-			int cnt = 0;
-			for (int j = 0; j < indiScore.length; j++) {
-				
-				if (indiScore[j] > avg) {
+			for (int j = 0; j < N; j++) {
+				if (arr[j] > avg) {
 					cnt++;
 				}
 			}
-			
-			avg = 0.0;
-			avg = (double)cnt / scoreCnt;
-			System.out.println(String.format("%,.3f", avg * 100) + "%");
+			System.out.printf("%.3f%%\n", (cnt / N) * 100);
 		}
-
-		scan.close();
-
 	}
 
 }

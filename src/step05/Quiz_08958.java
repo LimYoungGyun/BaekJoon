@@ -1,41 +1,41 @@
 package step05;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Quiz_08958 {
-
-	public static void main(String[] args) {
-
-		Scanner scan = new Scanner(System.in);
-
-		int number = scan.nextInt();
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringBuffer sb = new StringBuffer();
 		
-		String[] quiz = new String[number];
-		for (int i = 0; i < quiz.length; i++) {
-			quiz[i] = scan.next();
+		int num = Integer.valueOf(br.readLine());
+		
+		String[] arr = new String[num];
+		for (int i = 0; i < num; i++) {
+			arr[i] = br.readLine();
 		}
+		br.close();
 		
-		for (int i = 0; i < quiz.length; i++) {
-			String select_quiz = quiz[i];
-			String select_quiz_test[] = select_quiz.split("");
-			
-			int sum = 0;
+		for (int i = 0; i < num; i++) {
 			int cnt = 0;
-			
-			for (int j = 0; j < select_quiz_test.length; j++) {
-				if (select_quiz_test[j].equals("O")) {
+			int sum = 0;
+			for (int j = 0; j < arr[i].length(); j++) {
+				if (arr[i].charAt(j) == 'O') {
 					cnt++;
-					sum += cnt;
 				} else {
 					cnt = 0;
-					sum += cnt;
 				}
+				sum += cnt;
 			}
-			System.out.println(sum);
+//			bw.write(sum + "\n");
+			sb.append(sum).append("\n");
 		}
 		
-		scan.close();
-
+		// bw.flush();
+		// bw.close();
+		System.out.println(sb);
 	}
 
 }
